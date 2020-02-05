@@ -3,17 +3,38 @@ var resultsContainer = document.getElementsByClassName("results");
 var submitBTN = document.getElementById("submit");
 var questions = [
     {
-        question: "1. Commonly used data types DO NOT include",
-        answers: ['string','booleans','alerts','numbers'],
-        correctAnswers: "3"
+      title: "Commonly used data types DO NOT include:",
+      choices: ["strings", "booleans", "alerts", "numbers"],
+      answer: "alerts"
     },
-
     {
-        question: "2. where is the correct place to insert a javaScript?",
-        answers: ['<head>','<body>','<img>','<div>' ],
-        correctAnswers: "2"
+      title: "The condition in an if / else statement is enclosed within ____.",
+      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+      answer: "parentheses"
+    },
+    {
+      title: "Arrays in JavaScript can be used to store ____.",
+      choices: [
+        "numbers and strings",
+        "other arrays",
+        "booleans",
+        "all of the above"
+      ],
+      answer: "all of the above"
+    },
+    {
+      title:
+        "String values must be enclosed within ____ when being assigned to variables.",
+      choices: ["commas", "curly brackets", "quotes", "parentheses"],
+      answer: "quotes"
+    },
+    {
+      title:
+        "A very useful tool used during development and debugging for printing content to the debugger is:",
+      choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+      answer: "console.log"
     }
-];
+  ];
 
 
 //timed quiz on javascript fundamentals 

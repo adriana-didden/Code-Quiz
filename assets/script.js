@@ -1,6 +1,7 @@
 var quizContainer = document.getElementsByClassName("quiz");
 var resultsContainer = document.getElementsByClassName("results");
 var startBTN = document.getElementById("start");
+totalSeconds= 300;
 var questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -38,9 +39,21 @@ var questions = [
 
 function startQuiz() {
     buildQuiz();
+    timer();
+}
+function timer(){
+  //
+  var secondsLeft = totalSeconds - secondsElapsed;
+
+  var minutesLeft = Math.floor(secondsLeft / 60);
+
+    var timer = setInterval(function () {
+        secondsLeft--;
+        timer.textContent = "time:" + timer;
+    
+      }, 1000);
 
 }
-
 function buildQuiz(){
 for ( var i = 0; i < questions.length; i++ ) {
     var question = questions[i].question;

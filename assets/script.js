@@ -1,7 +1,11 @@
-var quizContainer = document.getElementsByClassName("quiz");
+var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementsByClassName("results");
 var startBTN = document.getElementById("start");
-totalSeconds= 300;
+var counter = "";
+var time = 40;
+var timeId;
+var timerEl= document.getElementById("timer");
+var count =0
 var questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -39,47 +43,57 @@ var questions = [
 
 function startQuiz() {
     buildQuiz();
-    timer();
-}
-function timer(){
-  //
-  var secondsLeft = totalSeconds - secondsElapsed;
-
-  var minutesLeft = Math.floor(secondsLeft / 60);
-
-    var timer = setInterval(function () {
-        secondsLeft--;
-        timer.textContent = "time:" + timer;
+    timeId = setInterval(timeCounter, 1000);
+    timeCounter() 
     
-      }, 1000);
 
 }
-function buildQuiz(){
-for ( var i = 0; i < questions.length; i++ ) {
-    var question = questions[i].question;
-    document.write (question);
-    
-    var options = questions[i].choices;
-    document.body.appendChild(document.createElement("br"));
-     var name = "radio"+i; 
-    for ( var opt in options ) {
-    
-      var radioEle = document.createElement("input");
-      radioEle.type = "radio";          
-      radioEle.value = options[opt];
-      radioEle.name = name;
-      document.body.appendChild(radioEle);
-      var label = document.createElement("Label");
-      label.innerHTML = options[opt];
-      document.body.appendChild(label);
-      document.body.appendChild(document.createElement("br"));
+
+function timeCounter() {
+
+    time--;
+    timerEl.textContent = "time: "+ time
+    if (time < 0) {
+        clearInterval(timeId);
+        return;
     }
-    
-    document.body.appendChild(document.createElement("br"));
-    
-  }
-};
 
+    console.log(time);
+}
+
+function check(guess) {
+    console.log(questions[count].choices[guess]===questions[count].answer)
+    count ++
+    buildQuiz()
+}
+
+function buildQuiz() {
+        quizContainer.innerHTML = ""
+        console.log(quizContainer)
+        var question = questions[count].question;
+        var title = document.createElement('h1')
+        title.textContent = question
+        quizContainer.appendChild(title);
+
+        var options = questions[count].choices;
+        quizContainer.appendChild(document.createElement("br"));
+       // var name = "radio" + i;
+        var listOfQuestion = document.createElement('ul')
+for (let i = 0; i < options.length; i++) {
+
+            var listItem = document.createElement("li");
+            listItem.innerHTML = "<button onclick = 'check("+i+")'>"+options[i]+"</button>"
+            listOfQuestion.appendChild(listItem);
+
+        }
+
+        quizContainer.appendChild(listOfQuestion);
+
+    
+};
+function score() {
+
+}
   //timed quiz on javascript fundamentals
 //stores high scores so i can gauge my progress to my peers
 

@@ -66,7 +66,11 @@ function check(guess) {
     count ++
     buildQuiz()
 
-    // if()
+    if(questions[count].choices[guess]===questions[count].answer){
+        score++
+    } else{
+        time-5;
+    }
 }
 
 function buildQuiz() {
@@ -93,7 +97,8 @@ for (let i = 0; i < options.length; i++) {
 
     
 };
-function score() {
+function endQuiz() {
+    
 
 }
   //timed quiz on javascript fundamentals

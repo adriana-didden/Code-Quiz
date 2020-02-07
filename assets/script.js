@@ -46,7 +46,6 @@ function startQuiz() {
     timeId = setInterval(timeCounter, 1000);
     timeCounter()
 
-
 }
 
 function timeCounter() {
@@ -55,12 +54,10 @@ function timeCounter() {
     timerEl.textContent = "time: " + time
     if (time <= 0) {
         clearInterval(timeId);
-        return;
-
+        endQuiz();
     }
 
     console.log(time);
-
 }
 
 function check(guess) {
@@ -69,13 +66,13 @@ function check(guess) {
     buildQuiz()
 
     if (guess === true) {
-        score++
-    } else if (time > 0) {
-        time -= 5;
-    } else if (time <= 0) {
-        endQuiz();
+        score+=10;
+        console.log("score:" + score);
+    } else {
+        time -= 10;
     }
 }
+
 
 function buildQuiz() {
     quizContainer.innerHTML = ""
@@ -87,7 +84,6 @@ function buildQuiz() {
 
     var options = questions[count].choices;
     quizContainer.appendChild(document.createElement("br"));
-    // var name = "radio" + i;
     var listOfQuestion = document.createElement('ul')
     for (let i = 0; i < options.length; i++) {
 
@@ -96,9 +92,8 @@ function buildQuiz() {
         listOfQuestion.appendChild(listItem);
 
         quizContainer.appendChild(listOfQuestion);
-
     }
-    endQuiz();
+    // endQuiz();
 
 };
 function endQuiz() {

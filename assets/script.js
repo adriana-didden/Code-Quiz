@@ -1,7 +1,7 @@
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementsByClassName("results");
 var startBTN = document.getElementById("start");
-var counter = "";
+var score = 0;
 var time = 40;
 var timeId;
 var timerEl= document.getElementById("timer");
@@ -65,12 +65,6 @@ function check(guess) {
     console.log(questions[count].choices[guess]===questions[count].answer)
     count ++
     buildQuiz()
-
-    if(questions[count].choices[guess]===questions[count].answer){
-        score++
-    } else{
-        time-5;
-    }
 }
 
 function buildQuiz() {

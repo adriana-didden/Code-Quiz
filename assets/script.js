@@ -92,7 +92,8 @@ for (let i = 0; i < options.length; i++) {
     
 };
 function endQuiz() {
-    
+    window.location.href = "highScores.html";
+
 
 }
   //timed quiz on javascript fundamentals

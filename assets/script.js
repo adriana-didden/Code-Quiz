@@ -4,8 +4,8 @@ var startBTN = document.getElementById("start");
 var score = 0;
 var time = 40;
 var timeId;
-var timerEl= document.getElementById("timer");
-var count =0
+var timerEl = document.getElementById("timer");
+var count = 0
 var questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -44,52 +44,62 @@ var questions = [
 function startQuiz() {
     buildQuiz();
     timeId = setInterval(timeCounter, 1000);
-    timeCounter() 
-    
+    timeCounter()
+
 
 }
 
 function timeCounter() {
 
     time--;
-    timerEl.textContent = "time: "+ time
+    timerEl.textContent = "time: " + time
     if (time <= 0) {
         clearInterval(timeId);
         return;
+
     }
 
     console.log(time);
+
 }
 
 function check(guess) {
-    console.log(questions[count].choices[guess]===questions[count].answer)
-    count ++
+    console.log(questions[count].choices[guess] === questions[count].answer)
+    count++
     buildQuiz()
+
+    if (guess === true) {
+        score++
+    } else if (time > 0) {
+        time -= 5;
+    } else if (time <= 0) {
+        endQuiz();
+    }
 }
 
 function buildQuiz() {
-        quizContainer.innerHTML = ""
-        console.log(quizContainer)
-        var question = questions[count].question;
-        var title = document.createElement('h1')
-        title.textContent = question
-        quizContainer.appendChild(title);
+    quizContainer.innerHTML = ""
+    console.log(quizContainer)
+    var question = questions[count].question;
+    var title = document.createElement('h1')
+    title.textContent = question
+    quizContainer.appendChild(title);
 
-        var options = questions[count].choices;
-        quizContainer.appendChild(document.createElement("br"));
-       // var name = "radio" + i;
-        var listOfQuestion = document.createElement('ul')
-for (let i = 0; i < options.length; i++) {
+    var options = questions[count].choices;
+    quizContainer.appendChild(document.createElement("br"));
+    // var name = "radio" + i;
+    var listOfQuestion = document.createElement('ul')
+    for (let i = 0; i < options.length; i++) {
 
-            var listItem = document.createElement("li");
-            listItem.innerHTML = "<button onclick = 'check("+i+")'>"+options[i]+"</button>"
-            listOfQuestion.appendChild(listItem);
-
-        }
+        var listItem = document.createElement("li");
+        listItem.innerHTML = "<button onclick = 'check(" + i + ")'>" + options[i] + "</button>"
+        listOfQuestion.appendChild(listItem);
 
         quizContainer.appendChild(listOfQuestion);
 
-    
+    }
+    endQuiz();
+
 };
 function endQuiz() {
     window.location.href = "highScores.html";

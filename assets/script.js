@@ -1,3 +1,4 @@
+//INDEX.HTML JS
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementsByClassName("results");
 var startBTN = document.getElementById("start");
@@ -96,27 +97,15 @@ function buildQuiz() {
     // endQuiz();
 
 };
+function storeScore() {
+    localStorage.setItem("score", JSON.stringify(score));
+  }
+  storeScore();
 function endQuiz() {
     window.location.href = "highScores.html";
 
 
 }
-  //timed quiz on javascript fundamentals
-//stores high scores so i can gauge my progress to my peers
-
-//click start button
-    //timer begins and presented a question
-
-    //when answer is clicked, the next question appears
-
-    //if question is answered incorrectly time is subtracted from timer
-
-    //if all questions are completed OR the timer = 0 the quiz is over
-
-    //when the quiz is over i can save my initials and score
 
 
-
-    //submit URL of github and functional deployed version
-
-    //add readme!
+//HIGHSCORE.HTML JS
